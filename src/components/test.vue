@@ -1,9 +1,11 @@
 <template>
 <div>
-    <p v-for="model of models"> Nom : {{model.name}} <br>
-    Solde : {{model.amount}} <br>Taux : {{model.rate}} %
+    <p v-for="asset of assets"> Nom : {{asset.name}} <br>
+    Solde : {{asset.amount}} <br>Taux : {{asset.rate}} %
 
     </p>
+
+    
 </div>
 
   
@@ -17,36 +19,19 @@ export default {
   name: "test",
   data() {
     return {
-      models: [],
+      assets: [],
       errors: []
     };
   },
 
   // Fetches posts when the component is created.
-  created() {
-    axios
-      .get(
-        `https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/asset/`
-      )
-      .then(response => {
-        // JSON responses are automatically parsed.
-        this.models = response.data;
-        console.log(this.models);
-        
-      })
-      .catch(e => {
-        this.errors.push(e);
-      });
+ async created() {
+    try{
+        const response = await axios.get(`https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/asset/`)
+        this.assets = response.data;
+   } catch(e){
+       this.error.push(e)
+   } 
   }
-
-   /*   mounted() {
-            axios({ method: "GET", "url": "https://cors-anywhere.herokuapp.com/https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset/model" })
-            .then(result => {
-                this.models = result.data.body;
-                console.log(this.models)
-            }, error => {
-                console.error(error);
-            });
-} */
 }
 </script>
