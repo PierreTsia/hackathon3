@@ -1,30 +1,33 @@
 <template>
   <div id="app-model">
-    <h2>Modèles de placements proposés:</h2>
-    <ul>
-      <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>
-     
-        <input v-model="modelAssetAmount">
-        <button v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
+    <div class="container-fluid patrimoine">
+      <div class="container patrimoine2">
+        <h2>Modèles de placements proposés:</h2>
+        <ul>
+          <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>
+  
+            <input v-model="modelAssetAmount">
+            <button v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
   
   
-      </li>
-    </ul>
   
-    <button v-on:click="postNewAsset()">Simulation</button>
+          </li>
+        </ul>
+  
+        <button v-on:click="postNewAsset()">Simulation</button>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
-  import axios from "axios";
+  import axios from "axios"
   import {
     mapGetters
   } from "vuex"
   
-  
   export default {
-    name: "model",
     computed: {
       ...mapGetters(['modelAssets'])
     },
@@ -58,12 +61,12 @@
       // Fetches posts when the component is created.
      
   
-      getAssetInfo: function(modelAsset, index,modelAssetAmount ) {
+      getAssetInfo: function(modelAsset, index, modelAssetAmount) {
         this.modelAssetName = modelAsset.name;
         this.modelAssetRate = modelAsset.rate/100;
         console.log( this.modelAssetRate)
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
-
+  
   
         console.log(modelAssetAmount);
         console.log(index);
