@@ -63,7 +63,7 @@
   
       getAssetInfo: function(modelAsset, index, modelAssetAmount) {
         this.modelAssetName = modelAsset.name;
-        this.modelAssetRate = modelAsset.rate/100;
+        this.modelAssetRate = modelAsset.rate;
         console.log( this.modelAssetRate)
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
   
@@ -85,11 +85,12 @@
             "https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset",
             this.newAsset
           );
-          console.log(this.newAsset);
+          console.log("coucou :"+this.newAsset.rate);
         } catch (e) {
           this.error.push(e);
         }
         this.$store.dispatch("GET_CURRENT_ASSETS");
+        this.$store.dispatch("GET_SIMULATED_ASSETS");
       }
     },
     mounted() {

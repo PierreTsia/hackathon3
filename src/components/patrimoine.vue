@@ -54,6 +54,7 @@
             this.currentAssets = response.data;
             console.log("currentAssets :"+this.currentAssets)
             this.$store.dispatch("GET_CURRENT_ASSETS");
+            this.$store.dispatch("GET_SIMULATED_ASSETS");
           })
           .catch(e => {
             this.errors.push(e);
