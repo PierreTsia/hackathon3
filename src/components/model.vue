@@ -1,7 +1,7 @@
 <template>
   <div id="app-model">
-    <div class="container-fluid patrimoine">
-      <div class="container patrimoine2">
+    <div class="container-fluid model">
+      <div class="container model2">
         <h2>Modèles de placements proposés:</h2>
         <ul>
           <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>

@@ -12,9 +12,10 @@
                 <h3>{{asset.name}}</h3>
               </div>
               <div class="card-body">
-                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} % <br>
-       Taux de Risque : {{asset.ratioRisk}}</p>
-       <button v-on:click="deleteItem(asset)">DEL</button>
+                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} % <br> Taux de Risque : {{asset.ratioRisk}}
+  
+                </p>
+                <button class="button" v-on:click="deleteItem(asset)">Retirer</button>
               </div>
             </div>
           </div>
@@ -52,7 +53,7 @@
         axios.delete(`https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset/` + asset.idAsset)
           .then(response => {
             this.currentAssets = response.data;
-            console.log("currentAssets :"+this.currentAssets)
+            console.log("currentAssets :" + this.currentAssets)
             this.$store.dispatch("GET_CURRENT_ASSETS");
             this.$store.dispatch("GET_SIMULATED_ASSETS");
           })
@@ -60,7 +61,7 @@
             this.errors.push(e);
           });
   
-        
+  
   
       }
     },
@@ -70,7 +71,6 @@
       console.log("get_du_asset", this.assets);
     }
   }
-  
 </script>
 
 
@@ -85,22 +85,34 @@
     padding: 25px;
   }
   
-h3 {
-  font-size: 25px;
-  margin: 0;
-}
-
-  p {
-    margin-top: 16px;
+  h3 {
+    font-size: 25px;
+    margin: 0;
   }
-
-  .card {
-    height: 177px;
+  
+  p {
+    margin: 16px 0 0 0;
   }
 
   .card-header {
     height: 79px;
   }
   
+  .card-body {
+    height: 110px;
+  }
+
+  .button {
+    background-color: white;
+    color: white#00ADD4;
+    border-radius: 10%;
+    margin-top: 8px;
+  }
+  
+  .button:hover {
+    background-color: #00ADD4;
+    color: white;
+    border-radius: 50%;
+  }
 </style>
 
