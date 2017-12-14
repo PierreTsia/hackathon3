@@ -1,56 +1,58 @@
 <template>
 
   <div id="app-ajout">
-    <h2>Ajouter de nouveaux placements</h2>
+   <!--  <h2>Ajouter de nouveaux placements</h2>
     
     <form action="">
 
       <label for="">Client:</label>
       <select v-model="ajout.client" name="" id="">
-        <option v-for="client in clients"> {{ client }} </option>
+        <option v-for="client in clients"> {{ client }} </option> -->
         <!-- select box créé. ajout des noms depuis data -->
-      </select>
+     <!--  </select>
 
-      <p v-for="asset of assets"> Nom : {{asset.name}} <br>
-    Solde : {{asset.amount}} <br>Taux : {{asset.rate}} %
-    </p>
+     
 
       <label for="">Nom du placement1:</label>
-      <input type="text" v-model.lazy="ajout.placement1" required />
+      <input type="text" v-model.lazy="ajout.placement1" required /> -->
       <!-- .lazy sert à afficher une fois qu'on clique à côté et pas en même temps que l'input -->
-      <label for="">Nom du placement2:</label>
+      <!-- <label for="">Nom du placement2:</label>
       <textarea v-model.lazy="ajout.placement2" name="" id="" cols="10" rows="5"></textarea>
       
       <div id="checkboxes">
         <label for="">Assurance vie</label>
-        <input type="checkbox" value="assurance" v-model="ajout.categories"/> 
+        <input type="checkbox" value="assurance" v-model="ajout.categories"/>  -->
         <!-- v-model magic, voir la data plus bas -->
         <!-- quand on va checker la checkbox, vue va ajouter la value à l'array dans data -->
-        <label for="">Plan Epargne Action</label>
+        <!-- <label for="">Plan Epargne Action</label>
         <input type="checkbox" value="pea" v-model="ajout.categories"/>
         <label for="">Appartement - Résidence Principale</label>
         <input type="checkbox" value="appart" v-model="ajout.categories"/>
         <label for="">ISR - Infrastructure Asie</label>
         <input type="checkbox" value="isr" v-model="ajout.categories"/>
       </div>
-      <button v-on:click.prevent="post">Ajouter un placement</button>
+      <button v-on:click.prevent="post">Ajouter un placement</button> -->
       <!-- .prevent: event modifier, pour changer la behavior du bouton -->
-    </form>
+   <!--  </form>
 
     <div id="preview">
       <h3>Placement preview:</h3>
-      <p>Client: {{ ajout.client }}</p>
+      <p>Client: {{ ajout.client }}</p> -->
       <!-- affiche le client sélectionné dans la checkbox de dessus -->
-      <p>Checked placement:</p>
+      <!-- <p>Checked placement:</p>
       <ul>
         <li v-for="category in ajout.categories"> {{ category }} </li>
       </ul>
       <p>Nom du placement1: {{ajout.placement1}} </p>
       <p>Nom du placement2:</p>
       <p> {{ajout.placement2}} </p>
-    </div>
+    </div> -->
 
+ <p v-for="asset of assets"> Nom : {{asset.name}} <br>
+    Solde : {{asset.amount}} <br>Taux : {{asset.rate}} %
+    </p>
 
+    
     <ul>
       <li v-for="(modelAsset, index) in modelAssets">{{modelAsset.name}} <br>
         <input v-model="modelAssetAmount"> <button v-on:click="addAmount(index)">X</button>
