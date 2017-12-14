@@ -1,25 +1,24 @@
 <template>
   <div id="app">
     <app-ajout></app-ajout>
-    <test></test>
+    <app-test></app-test>
     <h2>this is app</h2>
    
     
     <router-view/>
- 
+  </div>
 </template>
 
 
 
 <script>
 import ajout from './components/ajout.vue'
-import listeModel from './components/listeModel.vue'
+import test from './components/test.vue'
 
 export default {
   components: {
     'app-ajout': ajout,
-    'app-listeModel': listeModel,
-    'test': Test
+    'app-test': test
   },
   name: 'app',
   data() {
