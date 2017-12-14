@@ -1,5 +1,4 @@
 <template>
-  <h1>This is HelloWorld.vue</h1>
   
 </template>
 

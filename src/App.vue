@@ -4,6 +4,9 @@
       <h1>CG PRO</h1>
     </div>
     <app-patrimoine></app-patrimoine>
+    <div class="container-fluid photoScroll">
+
+    </div>
     <app-model></app-model>
     <app-charts></app-charts>
   
@@ -59,5 +62,11 @@
 
   .container-fluid {
     padding: 0;
+  }
+
+  .photoScroll {
+    height: 300px;
+    background: url("./assets/encart-patrimoine.jpeg") no-repeat center fixed;
+    background-size: cover;
   }
 </style>
