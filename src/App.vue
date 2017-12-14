@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <app-ajout></app-ajout>
-    <app-test></app-test>
     <h2>this is app</h2>
    
     
@@ -13,12 +12,10 @@
 
 <script>
 import ajout from './components/ajout.vue'
-import test from './components/test.vue'
 
 export default {
   components: {
-    'app-ajout': ajout,
-    'app-test': test
+    'app-ajout': ajout
   },
   name: 'app',
   data() {
