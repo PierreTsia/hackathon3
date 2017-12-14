@@ -5,7 +5,7 @@
       <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>
      
         <input v-model="modelAssetAmount">
-        <button v-on:click="getAssetInfo(modelAsset, index)">X</button>
+        <button v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
   
   
       </li>
@@ -58,13 +58,13 @@
       // Fetches posts when the component is created.
   
   
-      getAssetInfo: function(modelAsset, index) {
+      getAssetInfo: function(modelAsset, index,modelAssetAmount ) {
         this.modelAssetName = modelAsset.name;
         this.modelAssetRate = modelAsset.rate;
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
 
   
-        console.log(modelAsset);
+        console.log(modelAssetAmount);
         console.log(index);
       },
   
