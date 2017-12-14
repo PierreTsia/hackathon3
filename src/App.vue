@@ -1,39 +1,40 @@
 <template>
-
-
   <div id="app">
-    <test></test>
+    <app-ajout></app-ajout>
+    <app-test></app-test>
     <h2>this is app</h2>
    
     
     <router-view/>
   </div>
-  
-
-
 </template>
 
 
 
 <script>
-import Test from './components/test.vue'
+import ajout from './components/ajout.vue'
+
 
 export default {
-  name: 'app', 
   components: {
-            'test': Test
-        }
-}
+    'app-ajout': ajout
+    },
+  name: 'app',
+  data() {
+    return {
 
+    }
+  },
+  methods: {
+
+  }
+}
 </script>
 
+
+
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+  body {
+    margin: 0;
+  }
 </style>
