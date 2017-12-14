@@ -56,11 +56,12 @@
     },
     methods: {
       // Fetches posts when the component is created.
-  
+     
   
       getAssetInfo: function(modelAsset, index,modelAssetAmount ) {
         this.modelAssetName = modelAsset.name;
-        this.modelAssetRate = modelAsset.rate;
+        this.modelAssetRate = modelAsset.rate/100;
+        console.log( this.modelAssetRate)
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
 
   
@@ -73,7 +74,7 @@
         this.newAsset.idAssetModel = this.modelAssetIdAssetModel;
         this.newAsset.name = this.modelAssetName;
         this.newAsset.amount = this.modelAssetAmount;
-        this.newAsset.rate = this.modelAssetRate;
+        this.newAsset.rate = this.modelAssetRate/100;
         this.newAsset.start = "2017-12-14T00:00:00.000Z";
         this.newAsset.end = null;
         try {

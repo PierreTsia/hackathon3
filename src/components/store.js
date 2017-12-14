@@ -46,7 +46,7 @@ const actions = {
         })
     },
     GET_SIMULATED_ASSETS : ({commit})=>{
-        var url = 'https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/asset/simulation'
+        var url = 'https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/simulation?start=2017&end=2045'
         axios.get(url).then(response => {
             commit('SIMULATED_ASSETS', { simulatedAssets : response.data} )
         }, (err)=>{
