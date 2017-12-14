@@ -14,6 +14,7 @@
               <div class="card-body">
                 <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} % <br>
        Taux de Risque : {{asset.ratioRisk}}</p>
+       <button v-on:click="deleteItem(asset)">DEL</button>
               </div>
             </div>
           </div>
@@ -46,24 +47,29 @@
       };
     },
     methods: {
-      // Fetches posts when the component is created.
-      /*   async getCurrentAsset() {
-        try {
-          const response = await axios.get(
-       
-            `https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/asset/`
-          );
-          this.assets = response.data;
-        } catch (e) {
-          this.error.push(e);
-        }
-      } */
+      deleteItem: function(asset) {
+        console.log("delete :" + asset.idAsset);
+        axios.delete(`https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset/` + asset.idAsset)
+          .then(response => {
+            this.currentAssets = response.data;
+            console.log("currentAssets :"+this.currentAssets)
+            this.$store.dispatch("GET_CURRENT_ASSETS");
+          })
+          .catch(e => {
+            this.errors.push(e);
+          });
+  
+        
+  
+      }
     },
+  
     created() {
       this.$store.dispatch("GET_CURRENT_ASSETS");
       console.log("get_du_asset", this.assets);
     }
-  };
+  }
+  
 </script>
 
 
@@ -94,33 +100,6 @@ h3 {
   .card-header {
     height: 79px;
   }
-  /* 
-      .text {
-        font-size: 14px;
-        line-height: 20px;
-      }
-      
-      .item {
-        margin-bottom: 18px;
-      }
-      
-      .clearfix {
-        background-color: #00ADD4;
-      }
-      
-      .clearfix:before,
-      .clearfix:after {
-        display: table;
-        content: "";
-      }
-      
-      .clearfix:after {
-        clear: both
-      }
-      
-      .box-card {
-        width: 250px;
-        height: 175px;
-      } */
+  
 </style>
 

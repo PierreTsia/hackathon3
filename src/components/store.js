@@ -6,12 +6,13 @@ import axios from "axios"
 Vue.use(Vuex)
 var state = {
     assets: [],
-    modelAssets: []
+    modelAssets: [],
+    simulatedAssets: []
 }
 const getters = {
     assets : state => state.assets,
-    modelAssets : state => state.modelAssets
-    
+    modelAssets : state => state.modelAssets,
+    simulatedAssets : state => state.simulatedAssets
 }
 const mutations = {
     CURRENT_ASSETS : (state, {assets})=>{
@@ -20,6 +21,9 @@ const mutations = {
     MODEL_ASSETS : (state, {modelAssets})=>{
         state.modelAssets = modelAssets
     },
+    SIMULATED_ASSETS : (state, {simulatedAssets})=> {
+        state.simulatedAssets = simulatedAssets
+    }
 
 }
 
@@ -40,7 +44,16 @@ const actions = {
         }, (err)=>{
             console.log(err)
         })
-    }
+    },
+    GET_SIMULATED_ASSETS : ({commit})=>{
+        var url = 'https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/asset/simulation'
+        axios.get(url).then(response => {
+            commit('SIMULATED_ASSETS', { simulatedAssets : response.data} )
+        }, (err)=>{
+            console.log(err)
+        })
+    },
+
 
 }
 
