@@ -36,8 +36,20 @@
         ajout: {
           /* vont ensemble, même form, donc ajout. aux 2 */
   
-          modelAssetAmount: ""
+          modelAssetAmount: "",
+          modelAssetName: "",
+          modelAssetBaseTax: "",
+          modelAssetFeesSetup: "",
+          modelAssetFeesYear: "",
+          modelAssetIdAssetCategory: "",
+          modelAssetIdAssetModel: "",
+          modelAssetIdAssetType: "",
+          modelAssetIdDetention: "",
+          modelAssetRate: "",
+          modelAssetRatioLiquidity: "",
+          modelAssetRatioRisk: "",
         },
+  
         results: [],
         assets: [],
         errors: [],
@@ -49,17 +61,22 @@
       // Fetches posts when the component is created.
   
   
-      addAmount: function(index) {
-        console.log(this.modelAssetAmount);
+      getAssetInfo: function(modelAsset, index) {
+        this.modelAssetName = modelAsset.name;
+        this.modelAssetRate = modelAsset.rate;
+        this.modelAssetIdAssetModel = modelAsset.idAssetModel;
+
+  
+        console.log(modelAsset);
         console.log(index);
       },
   
       async postNewAsset() {
         this.newAsset.idUser = 4;
-        this.newAsset.idAssetModel = 1;
-        this.newAsset.name = "Assurance vie";
+        this.newAsset.idAssetModel = this.modelAssetIdAssetModel;
+        this.newAsset.name = this.modelAssetName;
         this.newAsset.amount = this.modelAssetAmount;
-        this.newAsset.rate = 1.5;
+        this.newAsset.rate = this.modelAssetRate;
         this.newAsset.start = "2017-12-14T00:00:00.000Z";
         this.newAsset.end = null;
         try {

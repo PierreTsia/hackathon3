@@ -12,7 +12,8 @@
                 <h3>{{asset.name}}</h3>
               </div>
               <div class="card-body">
-                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} %</p>
+                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} % <br>
+       Taux de Risque : {{asset.ratioRisk}}</p>
               </div>
             </div>
           </div>
