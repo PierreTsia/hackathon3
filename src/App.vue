@@ -6,20 +6,15 @@
     <app-patrimoine></app-patrimoine>
     <app-model></app-model>
     <app-charts></app-charts>
-<<<<<<< HEAD
     <app-simulation></app-simulation>
 
     
-=======
-  
->>>>>>> master
     <router-view/>
   </div>
 </template>
 
 
 <script>
-<<<<<<< HEAD
 
 import patrimoine from './components/patrimoine.vue'
 import model from './components/model.vue'
@@ -37,25 +32,6 @@ export default {
   data() {
     return {
 
-=======
-  import patrimoine from './components/patrimoine.vue'
-  import model from './components/model.vue'
-  import charts from './components/charts.vue'
-  
-  export default {
-    components: {
-      'app-patrimoine': patrimoine,
-      'app-model': model,
-      'app-charts': charts
-    },
-    data() {
-      return {
-  
-      }
-    },
-    methods: {
-  
->>>>>>> master
     }
   }
 </script>
