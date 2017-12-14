@@ -1,21 +1,27 @@
 <template>
   <div id="app">
-    <app-ajout></app-ajout>
-    <h2>this is app</h2>
-   
+    <h1>CG PRO</h1>
+
+    <app-patrimoine></app-patrimoine>
+    <app-model></app-model>
+    <app-charts></app-charts>
     
     <router-view/>
   </div>
 </template>
 
 
-
 <script>
-import ajout from './components/ajout.vue'
+
+import patrimoine from './components/patrimoine.vue'
+import model from './components/model.vue'
+import charts from './components/charts.vue'
 
 export default {
   components: {
-    'app-ajout': ajout
+    'app-patrimoine': patrimoine,
+    'app-model': model,
+    'app-charts': charts
   },
   name: 'app',
   data() {
