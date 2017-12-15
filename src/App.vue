@@ -50,7 +50,7 @@
   h4 {
     font-family: 'Exo 2', sans-serif;
   }
-  h2, h3, h4, p, i, li {
+  h2, h3, h4, p, i, li, a {
     color: #1f2b75;
   }
 

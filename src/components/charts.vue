@@ -2,9 +2,7 @@
     <div id="app-charts">
     
         <div class="container-fluid chart">
-    
-            <div class="container">
-    
+            <div class="container chart2">
     
                 <div id="accordion" role="tablist">
     
@@ -18,9 +16,9 @@
                         </div>
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" v-if="asset.idAssetCategory == 1" class="cardBody">
-                                <ol>
+                                <ul>
                                     <li>{{asset.name}}</li>
-                                </ol>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -35,9 +33,9 @@
                         </div>
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" v-if="asset.idAssetCategory == 2" class="cardBody">
-                                <ol>
+                                <ul>
                                     <li>{{asset.name}}</li>
-                                </ol>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -51,9 +49,9 @@
                         </div>
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" v-if="asset.idAssetCategory == 3" class="cardBody">
-                                <ol>
+                                <ul>
                                     <li>{{asset.name}}</li>
-                                </ol>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -67,9 +65,9 @@
                         </div>
                         <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                             <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" v-if="asset.idAssetCategory == 4" class="cardBody">
-                                <ol>
+                                <ul>
                                     <li>{{asset.name}}</li>
-                                </ol>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -116,4 +114,30 @@
     .chart {
         background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
     }
+
+.chart2 {
+  padding: 40px 0;
+}
+
+.chart2 h2 {
+  text-align: center;
+}
+
+.card {
+  margin: 40px 0 0 0;
+}
+
+.card ul {
+  padding-top: 15px;
+  list-style: ;
+}
+
+.card h4 {
+  text-align: center;
+}
+
+.card a {
+  text-decoration: none;
+}
+
 </style>
