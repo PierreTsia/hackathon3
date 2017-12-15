@@ -11,16 +11,45 @@
           <div class="col-md-6" v-for="(modelAsset, index) in modelAssets">
             <ul class="models">
               <li><span class="list">{{modelAsset.name}}</span> <br>
+                <div>
+                  <el-tooltip class="item" 
+                  effect="dark" 
+                  content="Taux d'intérêt : ce que vous rapporte votre placement" 
+                  placement="top-start">
+                  <icon  v-bind:class="{ 'low': modelAsset.rate <= 5, 'average': modelAsset.rate > 5 && modelAsset.rate < 8, 'high' : modelAsset.rate >= 8 }" class="fa" name="long-arrow-up"></icon> 
+                  </el-tooltip>{{modelAsset.rate}} %
+                  </span>
+                  | <span>  
+                  <el-tooltip class="item" 
+                  effect="dark" 
+                  content="Taux de risque : plus ce taux est élevé et plus votre placement comporte des risques de pertes en capital" 
+                  placement="top-start">
+                  <icon  v-bind:class="{ 'low': (modelAsset.ratioRisk / 7 * 100).toFixed(1) <= 35, 'average': (modelAsset.ratioRisk / 7 * 100).toFixed(1) >= 35 && (modelAsset.ratioRisk / 7 * 100).toFixed(1) <=60, 'high' : (modelAsset.ratioRisk / 7 * 100).toFixed(1) > 60 }"class="fa" name="arrows-v"></icon> 
+                  </el-tooltip>{{(modelAsset.ratioRisk / 7 * 100).toFixed(1)}} % 
+                  </span>
+                  | <span>  
+                  <el-tooltip class="item" 
+                  effect="dark" 
+                  content="Taux de liquidité : un taux élevé garantit la disponibilité de votre argent en cas de besoin" 
+                  placement="top-start">
+                  <icon v-bind:class="{ 'low': (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) <= 35, 'average': (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) >= 35 && (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) <=60, 'high' : (modelAsset.ratioRisk / 7 * 100).toFixed(1) > 60 }"class="fa" name="money"></icon> 
+                  </el-tooltip>{{(modelAsset.ratioLiquidity / 5 * 100).toFixed(1)}} % 
+                  </span>
+                
+                </div>
+  
                 <input v-model="modelAssetAmount" placeholder="€">
-                <button class="button1" v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
+                <button class="button1" v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)"> <icon class="fa" name="plus-circle"></icon></button>
               </li>
             </ul>
           </div>
   
           <div class="col-md-12 datePicker">
             <div class="block col">
-              <el-date-picker v-model="value9" type="daterange" start-placeholder="Start Date" end-placeholder="End Date" default-value="2017-12-15">
-              </el-date-picker>
+              <!--  <el-date-picker v-model="value9" type="daterange" start-placeholder="Start Date" end-placeholder="End Date" default-value="2017-12-15">
+                  </el-date-picker> -->
+              <icon class="fa" name="calendar"></icon>
+              <input v-model="startDate" placeholder="End Date (ex : 2020)">
             </div>
           </div>
   
@@ -44,7 +73,12 @@
     mapGetters
   } from "vuex";
   import BootstrapVue from "bootstrap-vue";
+  import Icon from 'vue-awesome/components/Icon'
   
+   
+  
+
+
   export default {
   
     computed: {
@@ -88,9 +122,7 @@
         console.log(this.modelAssetRate)
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
   
-  
-        console.log(modelAssetAmount);
-        console.log(index);
+        console.log("simulated assets :" + this.simulatedAssets)
         console.log(this.startDate)
       },
   
@@ -107,13 +139,18 @@
             "https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset",
             this.newAsset
           );
+          this.$store.commit("SIMULATED_ASSETS", this.newAsset.start)
           console.log("coucou :" + this.newAsset.rate);
         } catch (e) {
           this.error.push(e);
         }
         this.$store.dispatch("GET_CURRENT_ASSETS");
+  
         this.$store.dispatch("GET_SIMULATED_ASSETS");
       }
+    },
+    components: {
+      Icon
     },
     mounted() {
       this.$store.dispatch('GET_MODEL_ASSETS')
@@ -123,8 +160,21 @@
 </script>
 
 <style scoped>
+
+  .low {
+    color : green;
+  }
+
+  .average{
+    color : orange;
+  }
+
+  .high{
+    color : red;
+  }
+  .fa {}
+  
   .model_content {
-    
     text-align: center;
   }
   
@@ -137,7 +187,7 @@
   .list {
     margin-bottom: 10px;
   }
-
+  
   .models {
     padding: 10px 30px;
     background-color: rgba(245, 245, 245, 0.9);
@@ -146,8 +196,8 @@
   h2 {
     text-align: center;
     padding: 10px 0 12px 0;
-     background-color: rgba(245, 245, 245, 0.7);
-     margin-bottom: 16px;
+    background-color: rgba(245, 245, 245, 0.7);
+    margin-bottom: 16px;
   }
   
   li {

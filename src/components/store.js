@@ -7,7 +7,7 @@ Vue.use(Vuex)
 var state = {
     assets: [],
     modelAssets: [],
-    simulatedAssets: []
+    simulatedAssets: [],
 }
 const getters = {
     assets : state => state.assets,
@@ -49,6 +49,7 @@ const actions = {
         var url = 'https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/4/simulation?start=2017&end=2045'
         axios.get(url).then(response => {
             commit('SIMULATED_ASSETS', { simulatedAssets : response.data} )
+            
         }, (err)=>{
             console.log(err)
         })
