@@ -17,7 +17,7 @@
                   content="Taux d'intérêt : ce que vous rapporte votre placement" 
                   placement="top-start">
                   <icon  v-bind:class="{ 'low': modelAsset.rate <= 5, 'average': modelAsset.rate > 5 && modelAsset.rate < 8, 'high' : modelAsset.rate >= 8 }" class="fa" name="long-arrow-up"></icon> 
-                  </el-tooltip>{{modelAsset.rate}} %
+                  </el-tooltip>  {{modelAsset.rate}} %
                   </span>
                   | <span>  
                   <el-tooltip class="item" 
@@ -25,7 +25,7 @@
                   content="Taux de risque : plus ce taux est élevé et plus votre placement comporte des risques de pertes en capital" 
                   placement="top-start">
                   <icon  v-bind:class="{ 'low': (modelAsset.ratioRisk / 7 * 100).toFixed(1) <= 35, 'average': (modelAsset.ratioRisk / 7 * 100).toFixed(1) >= 35 && (modelAsset.ratioRisk / 7 * 100).toFixed(1) <=60, 'high' : (modelAsset.ratioRisk / 7 * 100).toFixed(1) > 60 }"class="fa" name="arrows-v"></icon> 
-                  </el-tooltip>{{(modelAsset.ratioRisk / 7 * 100).toFixed(1)}} % 
+                  </el-tooltip>  {{(modelAsset.ratioRisk / 7 * 100).toFixed(1)}} % 
                   </span>
                   | <span>  
                   <el-tooltip class="item" 
@@ -33,7 +33,7 @@
                   content="Taux de liquidité : un taux élevé garantit la disponibilité de votre argent en cas de besoin" 
                   placement="top-start">
                   <icon v-bind:class="{ 'low': (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) <= 35, 'average': (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) >= 35 && (modelAsset.ratioLiquidity / 5 * 100).toFixed(1) <=60, 'high' : (modelAsset.ratioRisk / 7 * 100).toFixed(1) > 60 }"class="fa" name="money"></icon> 
-                  </el-tooltip>{{(modelAsset.ratioLiquidity / 5 * 100).toFixed(1)}} % 
+                  </el-tooltip>  {{(modelAsset.ratioLiquidity / 5 * 100).toFixed(1)}} % 
                   </span>
                 
                 </div>
