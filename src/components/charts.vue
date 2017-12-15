@@ -1,40 +1,76 @@
 <template>
-  <div id="app-charts">
-
-      <div>
-          <h2>Actifs bancaires:</h2>
-      </div>
-
-      <div>
-          <h2>Assurance-vie:</h2>
-      </div>
-
-      <div>
-          <h2>Actifs financiers (valeurs mobilères):</h2>
-      </div>
-
-      <div>
-          <h2>Actifs professionnels:</h2>
-      </div>
-
-  </div>
+    <div id="app-charts">
+        <div class="container-fluid chart">
+    
+            <div class="container">
+                <div>
+                    <h3>Actifs bancaires:</h3>
+                    <div class="row">
+                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory[1]" class="col-sm-4">
+                            <div class="card text-center border-info mb-3">
+                                <div class="card-header">
+                                    <h3>{{asset.name}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} <br> Taux de Risque : {{asset.ratioRisk}}
+    
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div>
+                    <h3>Assurance-vie:</h3>
+                </div>
+    
+                <div>
+                    <h3>Actifs financiers (valeurs mobilères):</h3>
+                </div>
+    
+                <div>
+                    <h3>Actifs professionnels:</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 
 
 <script>
-
-
-
-export default {
- 
-}
+    import axios from "axios";
+    import {
+        mapGetters
+    } from "vuex";
+    import BootstrapVue from "bootstrap-vue";
+    
+    export default {
+        computed: {
+            ...mapGetters(["assets"])
+        },
+        data() {
+            return {
+                currentAssets: [],
+    
+                modelAssets: [],
+                newAsset: {}
+                // errors:
+            };
+        },
+    
+        created() {
+            this.$store.dispatch("GET_CURRENT_ASSETS");
+            console.log("get_du_asset", this.assets);
+        }
+    }
 </script>
 
 
 
 <style scoped>
- .model1 {
-    background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
-  }
+    .chart {
+        background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
+    }
 </style>
