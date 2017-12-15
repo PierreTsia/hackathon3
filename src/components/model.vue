@@ -13,6 +13,20 @@
   
           </li>
         </ul>
+
+        <div>
+           <input v-model="startDate">
+        </div>
+  
+      <!--   <div class="block">
+          <span class="demonstration">daterange</span>
+          <el-date-picker v-model="value9" 
+          type="daterange" 
+          start-placeholder="Start Date" 
+          end-placeholder="End Date" 
+          default-value="2017-01-01">
+          </el-date-picker>
+        </div> -->
   
         <button v-on:click="postNewAsset()">Simulation</button>
       </div>
@@ -53,23 +67,26 @@
         results: [],
         assets: [],
         errors: [],
-        newAsset: {}
+        newAsset: {},
+        startDate: '',
+       
         // errors:
       };
     },
     methods: {
       // Fetches posts when the component is created.
-     
+  
   
       getAssetInfo: function(modelAsset, index, modelAssetAmount) {
         this.modelAssetName = modelAsset.name;
         this.modelAssetRate = modelAsset.rate;
-        console.log( this.modelAssetRate)
+        console.log(this.modelAssetRate)
         this.modelAssetIdAssetModel = modelAsset.idAssetModel;
   
   
         console.log(modelAssetAmount);
         console.log(index);
+        console.log(this.startDate)
       },
   
       async postNewAsset() {
@@ -77,15 +94,15 @@
         this.newAsset.idAssetModel = this.modelAssetIdAssetModel;
         this.newAsset.name = this.modelAssetName;
         this.newAsset.amount = this.modelAssetAmount;
-        this.newAsset.rate = this.modelAssetRate/100;
-        this.newAsset.start = "2017-12-14T00:00:00.000Z";
+        this.newAsset.rate = this.modelAssetRate / 100;
+        this.newAsset.start = this.startDate;
         this.newAsset.end = null;
         try {
           const response = await axios.post(
             "https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset",
             this.newAsset
           );
-          console.log("coucou :"+this.newAsset.rate);
+          console.log("coucou :" + this.newAsset.rate);
         } catch (e) {
           this.error.push(e);
         }

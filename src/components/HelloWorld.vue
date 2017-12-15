@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   
 </template>
 

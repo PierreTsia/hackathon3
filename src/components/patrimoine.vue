@@ -12,7 +12,7 @@
                 <h3>{{asset.name}}</h3>
               </div>
               <div class="card-body">
-                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} % <br> Taux de Risque : {{asset.ratioRisk}}
+                <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}}  <br> Taux de Risque : {{asset.ratioRisk}}
   
                 </p>
                 <button class="button" v-on:click="deleteItem(asset)">Retirer</button>
