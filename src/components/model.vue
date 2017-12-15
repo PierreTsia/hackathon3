@@ -1,34 +1,39 @@
 <template>
   <div id="app-model">
-    <div class="container-fluid model1">
-      <div class="container model2">
+  
+    <div class="container-fluid model">
+      <div class="container model_content">
         <h2>Modèles de placements proposés:</h2>
-        <ul>
-          <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>
   
-            <input v-model="modelAssetAmount">
-            <button class="button1" v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
   
-          </li>
-        </ul>
-
-        <div>
-           <input v-model="startDate">
+        <div class="row">
+  
+          <div class="col-md-6" v-for="(modelAsset, index) in modelAssets">
+            <ul class="models">
+              <li><span class="list">{{modelAsset.name}}</span> <br>
+                <input v-model="modelAssetAmount" placeholder="€">
+                <button class="button1" v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="col-md-12 datePicker">
+            <div class="block col">
+              <el-date-picker v-model="value9" type="daterange" start-placeholder="Start Date" end-placeholder="End Date" default-value="2017-12-15">
+              </el-date-picker>
+            </div>
+          </div>
+  
+          <div class="col-md-12">
+            <button class="button2" v-on:click="postNewAsset()">Ajouter ces placements</button>
+          </div>
+  
         </div>
   
-      <!--   <div class="block">
-          <span class="demonstration">daterange</span>
-          <el-date-picker v-model="value9" 
-          type="daterange" 
-          start-placeholder="Start Date" 
-          end-placeholder="End Date" 
-          default-value="2017-01-01">
-          </el-date-picker>
-        </div> -->
   
-        <button class="button2" v-on:click="postNewAsset()"><i class="fa fa-edit"></i>Ajouter ces placements</button>
       </div>
     </div>
+  
   </div>
 </template>
 
@@ -39,17 +44,14 @@
     mapGetters
   } from "vuex";
   import BootstrapVue from "bootstrap-vue";
-  import Icon from 'vue-awesome/components/Icon';
   
   export default {
-
+  
     computed: {
       ...mapGetters(['modelAssets'])
     },
-    components: Icon,
     data() {
       return {
-        components: Icon,
         ajout: {
           /* vont ensemble, même form, donc ajout. aux 2 */
   
@@ -72,7 +74,7 @@
         errors: [],
         newAsset: {},
         startDate: '',
-       
+  
         // errors:
       };
     },
@@ -121,24 +123,40 @@
 </script>
 
 <style scoped>
-  .model1 {
-    background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
+  .model_content {
+    
+    text-align: center;
   }
   
-  .model2 {
-    padding-bottom: 25px;
+  .model {
+    padding: 40px 0;
+    background: url("../assets/encart-patrimoine.jpeg") no-repeat center fixed;
+    background-size: cover;
+  }
+  
+  .list {
+    margin-bottom: 10px;
+  }
+
+  .models {
+    padding: 10px 30px;
+    background-color: rgba(245, 245, 245, 0.9);
   }
   
   h2 {
     text-align: center;
-    padding: 25px;
+    padding: 10px 0 12px 0;
+     background-color: rgba(245, 245, 245, 0.7);
+     margin-bottom: 16px;
   }
   
   li {
+    font-size: 20px;
     list-style: none;
   }
   
   .button2 {
     text-align: center;
+    margin-top: 15px;
   }
 </style>

@@ -12,7 +12,6 @@ import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import BootstrapVue from 'bootstrap-vue'
-import Icon from 'vue-awesome/icons'
 
 
 
@@ -21,7 +20,6 @@ Vue.use(Vuex);
 Vue.config.productionTip = false;
 Vue.use(ElementUI,{locale});
 Vue.use(BootstrapVue);
-Vue.component('icon', Icon);
 
 /* eslint-disable no-new */
 new Vue({

@@ -33,6 +33,8 @@ export default {
 
 
 
-<style>
-
+<style scoped>
+ .model1 {
+    background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
+  }
 </style>
