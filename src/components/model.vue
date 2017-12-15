@@ -100,7 +100,7 @@
         this.newAsset.name = this.modelAssetName;
         this.newAsset.amount = this.modelAssetAmount;
         this.newAsset.rate = this.modelAssetRate / 100;
-        this.newAsset.start = this.startDate;
+        this.newAsset.start = "2017-12-01T00:00:00.000Z";
         this.newAsset.end = null;
         try {
           const response = await axios.post(

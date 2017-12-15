@@ -4,10 +4,10 @@
     
             <div class="container">
                 <div>
-                    <h3>Actifs bancaires:</h3>
-                    <div class="row">
-                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory[1]" class="col-sm-4">
-                            <div class="card text-center border-info mb-3">
+                    <h3>Vos actifs bancaires:</h3>
+                    <div>
+                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" class="col-sm-4">
+                            <div v-if="idAssetCategory == 1" class="card text-center border-info mb-3">
                                 <div class="card-header">
                                     <h3>{{asset.name}}</h3>
                                 </div>
@@ -22,15 +22,57 @@
                 </div>
     
                 <div>
-                    <h3>Assurance-vie:</h3>
+                    <h3>Vos assurance-vies:</h3>
+                    <div>
+                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" class="col-sm-4">
+                            <div v-if="idAssetCategory == 2" class="card text-center border-info mb-3">
+                                <div class="card-header">
+                                    <h3>{{asset.name}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} <br> Taux de Risque : {{asset.ratioRisk}}
+    
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
     
                 <div>
-                    <h3>Actifs financiers (valeurs mobilères):</h3>
+                    <h3>Vos actifs financiers (valeurs mobilères):</h3>
+                    <div>
+                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" class="col-sm-4">
+                            <div v-if="idAssetCategory == 3" class="card text-center border-info mb-3">
+                                <div class="card-header">
+                                    <h3>{{asset.name}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} <br> Taux de Risque : {{asset.ratioRisk}}
+    
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
     
                 <div>
-                    <h3>Actifs professionnels:</h3>
+                    <h3>Vos actifs professionnels:</h3>
+                    <div>
+                        <div v-for="(asset, idAssetCategory) in assets" :key="idAssetCategory" class="col-sm-4">
+                            <div v-if="idAssetCategory == 4" class="card text-center border-info mb-3">
+                                <div class="card-header">
+                                    <h3>{{asset.name}}</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p> Solde : {{asset.amount}} <br>Taux : {{asset.rate}} <br> Taux de Risque : {{asset.ratioRisk}}
+    
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
