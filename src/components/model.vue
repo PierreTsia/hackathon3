@@ -1,20 +1,18 @@
 <template>
   <div id="app-model">
-    <div class="container-fluid model">
+    <div class="container-fluid model1">
       <div class="container model2">
         <h2>Modèles de placements proposés:</h2>
         <ul>
           <li v-for="(modelAsset, index) in modelAssets">Nom :{{modelAsset.name}} <br>
   
             <input v-model="modelAssetAmount">
-            <button v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
-  
-  
+            <button class="button1" v-on:click="getAssetInfo(modelAsset, index, modelAssetAmount)">X</button>
   
           </li>
         </ul>
   
-        <button v-on:click="postNewAsset()">Simulation</button>
+        <button class="button2" v-on:click="postNewAsset()"><i class="fa fa-edit"></i>Ajouter ces placements</button>
       </div>
     </div>
   </div>
@@ -22,17 +20,22 @@
 
 
 <script>
-  import axios from "axios"
+  import axios from "axios";
   import {
     mapGetters
-  } from "vuex"
+  } from "vuex";
+  import BootstrapVue from "bootstrap-vue";
+  import Icon from 'vue-awesome/components/Icon';
   
   export default {
+
     computed: {
       ...mapGetters(['modelAssets'])
     },
+    components: Icon,
     data() {
       return {
+        components: Icon,
         ajout: {
           /* vont ensemble, même form, donc ajout. aux 2 */
   
@@ -98,6 +101,25 @@
   };
 </script>
 
-<style>
+<style scoped>
+  .model1 {
+    background-image: linear-gradient(to left top, #00ADD4 0%, white 90%);
+  }
   
+  .model2 {
+    padding-bottom: 25px;
+  }
+  
+  h2 {
+    text-align: center;
+    padding: 25px;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  .button2 {
+    text-align: center;
+  }
 </style>

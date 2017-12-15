@@ -76,7 +76,11 @@
 
 <style scoped>
   .patrimoine {
-    background-image: linear-gradient(to right top, white 0%, #00ADD4 100%);
+    background-image: linear-gradient(to right top, white 0%, #00ADD4 90%);
+  }
+
+  .patrimoine2{
+    padding-bottom: 25px;
   }
   
   h2 {
