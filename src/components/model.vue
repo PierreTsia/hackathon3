@@ -132,15 +132,14 @@
         this.newAsset.name = this.modelAssetName;
         this.newAsset.amount = this.modelAssetAmount;
         this.newAsset.rate = this.modelAssetRate / 100;
-        this.newAsset.start = this.startDate;
+        this.newAsset.start = "2017-12-01T00:00:00.000Z";
         this.newAsset.end = null;
         try {
           const response = await axios.post(
             "https://ulnjbgo4dl.execute-api.eu-central-1.amazonaws.com/dev/hackaton/user/asset",
             this.newAsset
           );
-          this.$store.commit("SIMULATED_ASSETS", this.newAsset.start)
-          console.log("coucou :" + this.newAsset.rate);
+                console.log("coucou :" + this.newAsset.rate);
         } catch (e) {
           this.error.push(e);
         }

@@ -13,9 +13,9 @@
             <div v-for="result in simulatedAssets" v-if="result.averageLiquidity && result.averageRisk"> <span> Moyenne taux de risque : {{result.averageRisk}}</span> <br>
            <span> Moyenne taux de liquidité : {{result.averageLiquidity}}</span>
              <ul>
-                <li v-for="totalIncome in result.totalIncomeAmount">Total income Amount :{{totalIncome}}
+                <li v-for="totalIncome in result.totalIncomeAmount">Total income Amount :{{totalIncome.toFixed(1)}}
                 </li>
-                <li v-for="totalAccumulated in result.totalAccumulatedAmount">Total Accumulated Amount :{{totalAccumulated}}
+                <li v-for="totalAccumulated in result.totalAccumulatedAmount">Total Accumulated Amount :{{totalAccumulated.toFixed(1)}}
                 </li>
             </ul>
             </div>
