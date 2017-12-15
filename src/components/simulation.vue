@@ -1,17 +1,10 @@
 <template>
-    <div id="app-simulation">
+    <div class="container" id="app-simulation">
         <h1>Patrimoine simulé</h1>
-        <ul>
-            <li v-if="asset.name" v-for="asset in simulatedAssets">
-                <span >{{asset.name}} : </span><br>
-                <span >{{asset.rate}} : </span><br>
-                <span v-for="(amount, index) in asset.cumulatedAmount">{{index+2017}} : {{amount}} <br></span>
-            </li>
-        </ul>
 
-        <div>
-            <div v-for="result in simulatedAssets" v-if="result.averageLiquidity && result.averageRisk"> <span> Moyenne taux de risque : {{result.averageRisk}}</span> <br>
-           <span> Moyenne taux de liquidité : {{result.averageLiquidity}}</span>
+         <div class="row">
+            <div class="summary" v-for="result in simulatedAssets" v-if="result.averageLiquidity && result.averageRisk"> <span> Moyenne taux de risque : {{(result.averageRisk/7 *100).toFixed(1)}} %</span> <br>
+           <span> Moyenne taux de liquidité : {{(result.averageLiquidity / 5 * 100).toFixed(1)}} %</span>
              <ul>
                 <li v-for="totalIncome in result.totalIncomeAmount">Total income Amount :{{totalIncome.toFixed(1)}}
                 </li>
@@ -19,12 +12,27 @@
                 </li>
             </ul>
             </div>
+
+            <div class="row">
+
+        <ul>
+            <li v-if="asset.name" v-for="asset in simulatedAssets">
+                <span >{{asset.name}} : </span><br>
+              
+                <span v-for="(amount, index) in asset.cumulatedAmount">{{index+2017}} : {{amount}} <br></span>
+            </li>
+        </ul>
+         </div>
+
+       
            
 
 
         </div>
     
     </div>
+
+    
 </template>
 
 
@@ -62,6 +70,6 @@
     };
 </script>
 
-<style>
+<style scoped>
     
 </style>
